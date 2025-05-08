@@ -1,0 +1,794 @@
+/* styles.css - Complete File */
+
+/* Define Color Palette */
+:root {
+  --primary-color: #064e50; /* Dark Teal */
+  --secondary-color: #0a7075; /* Medium Teal */
+  --accent-color: #fef19c; /* Light Yellow */
+  --light-bg: #efefd7; /* Off-white/Cream */
+  --dark-text: #183b56; /* Dark Blue/Gray */
+  --medium-text: #5a7184; /* Medium Gray */
+  --light-text: #efefd7; /* Light Cream (for dark backgrounds) */
+  --white: #ffffff;
+  --black: #000000;
+  --link-color: #37afe1; /* Light Blue */
+  --danger-color: #dc3545; /* Red for errors */
+  --success-color: #198754; /* Green for success */
+  --warning-color: #ffc107; /* Yellow for warning */
+  --info-color: #0dcaf0; /* Cyan for info */
+  --gradient-primary: linear-gradient(var(--secondary-color), #0c969c, #6da3be);
+  --radial-gradient-special: radial-gradient(#f7cfd8, #f4f8d3, #a6f1e0, #73c7c7);
+  --border-color: #e5eaf4;
+  --border-color-subtle: rgba(0,0,0,0.1);
+}
+
+/* Base Styles */
+body {
+  font-family: "Roboto", sans-serif;
+    color: var(--medium-text);
+    /* Removed margin-top here, handled by main padding */
+    display: flex;          /* Enable flexbox */
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh;      /* Minimum height of viewport */
+    background-color: var(--white);
+}
+
+main {
+  flex-grow: 1; /* Allow main content to fill space */
+  padding-top: 70px; /* Add padding equivalent to fixed navbar height */
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-text);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500; /* Slightly bolder headings */
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #2aa3d1; /* Darken link color */
+  text-decoration: underline;
+}
+
+/* --- Header / Navbar Refinements --- */
+.navbar {
+  background-color: var(--primary-color) !important;
+  padding-top: 0.6rem; /* Slightly more vertical padding */
+  padding-bottom: 0.6rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  /* Adjust body margin-top if navbar height changes significantly */
+}
+
+/* Brand Logo & Name */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding-top: 0; /* Reset padding */
+  padding-bottom: 0;
+  margin-right: 1.5rem; /* Space after brand */
+}
+
+.navbar-brand-logo {
+  width: 45px; /* Adjusted size */
+  height: 45px;
+  object-fit: contain; /* Prevent squishing */
+  margin-right: 0.5rem; /* Space between logo and text */
+}
+
+.navbar-brand-text {
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.navbar-brand-text:hover {
+  color: var(--accent-color);
+}
+
+
+/* Navigation Links */
+.navbar .nav-link {
+  color: rgba(239, 239, 215, 0.85); /* Slightly less bright */
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar .nav-link.active {
+  color: var(--accent-color);
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Profile Dropdown */
+.navbar .profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  display: inline-flex; /* Let this control the display */
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-right: 0.6rem;
+  flex-shrink: 0;
+}
+.navbar .dropdown-toggle::after {
+  color: rgba(239, 239, 215, 0.85);
+  margin-left: 0.35em; /* Add some space before the arrow */
+  /* vertical-align: middle; */ /* Avoid vertical-align with flex */
+}
+
+/* Ensure dropdown toggle aligns well */
+.navbar .nav-item.dropdown .nav-link {
+  display: flex;        /* Use flex */
+  align-items: center;  /* Use flex alignment */
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  line-height: 1.2;
+}
+.navbar .nav-item.dropdown .nav-link span { /* Styling for the email text */
+   color: rgba(239, 239, 215, 0.9);
+   font-size: 0.9rem;
+   margin: 0;
+   padding: 0;
+   line-height: inherit;
+}
+
+/* Dropdown Menu Style */
+.navbar .dropdown-menu {
+  border-radius: 0.375rem;
+  border: 1px solid var(--border-color-subtle);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.1);
+  font-size: 0.95rem;
+  margin-top: 0.5rem; /* Add some space below navbar */
+}
+.navbar .dropdown-item {
+  padding: 0.5rem 1rem;
+  color: var(--dark-text); /* Standard text color */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.navbar .dropdown-item:hover {
+  background-color: rgba(0,0,0,0.05); /* Subtle hover */
+  color: var(--dark-text);
+}
+.navbar .dropdown-item:active { /* Style for when item is clicked */
+   background-color: var(--secondary-color);
+   color: var(--white);
+}
+
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem; /* Adjust padding */
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28239, 239, 215, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.2em; /* Adjust size */
+  height: 1.2em;
+}
+
+/* styles.css */
+
+/* ... (Keep all other styles) ... */
+
+/* Cart Badge specific positioning */
+.navbar .nav-link .badge {
+  font-size: 0.65em; /* Smaller badge text */
+  padding: 0.3em 0.5em; /* Adjust badge padding */
+  /* Optional: Adjust translate-middle slightly if needed */
+  /* transform: translate(-10%, -60%); */
+}
+
+/* Ensure icon size is consistent */
+.navbar .nav-link i.fs-5 {
+  vertical-align: text-bottom; /* Align icon slightly better */
+}
+
+/* Add some spacing between cart and login/profile */
+.navbar-nav .nav-item:has(a[href="cart.php"]) + .nav-item {
+  margin-left: 0.5rem; /* Add space after the cart item */
+}
+
+
+/* --- Hero Section (index.php) --- */
+.hero-section {
+  background-image: url("https://img.freepik.com/free-photo/flat-lay-mediterranean-diet-with-mussels_23-2148234870.jpg?uid=R184039633&ga=GA1.1.1423951254.1722363157&semt=ais_hybrid");
+  min-height: calc(100vh - 70px); /* Adjust based on final navbar height */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px; /* More padding */
+  color: var(--white); /* Default text color for hero */
+}
+.hero-section::before { /* Optional overlay for better text readability */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust darkness */
+  z-index: 1;
+}
+.hero-section .container { /* Ensure content is above overlay */
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  color: var(--white) !important; /* Use white or accent */
+  font-size: 2.8rem; /* Larger title */
+  font-weight: 500; /* Bolder */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow */
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important; /* High contrast subtitle */
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+   text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* --- Buttons --- */
+.btn {
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.2s ease-in-out; /* Smooth transition */
+  cursor: pointer;
+  text-transform: uppercase; /* Optional: Uppercase button text */
+  letter-spacing: 0.5px; /* Optional: spacing */
+}
+.btn-lg {
+   padding: 0.8rem 1.5rem;
+   font-size: 1.1rem;
+}
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.btn-primary {
+  color: var(--white);
+  background-image: var(--gradient-primary);
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.btn-primary:hover {
+  color: var(--white);
+  filter: brightness(1.1); /* Slightly brighten gradient */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-1px); /* Slight lift */
+}
+
+.btn-outline-primary {
+  color: var(--secondary-color); /* Use secondary for outline */
+  background-color: transparent;
+  border-color: var(--secondary-color);
+}
+
+.btn-outline-primary:hover {
+  color: var(--white);
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary { /* Example: For dark buttons on light bg */
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-color); /* Use secondary on hover */
+  border-color: var(--secondary-color);
+}
+
+/* --- Sections --- */
+.section {
+  padding-top: 4rem; /* More vertical space */
+  padding-bottom: 4rem;
+}
+
+.section-bg-light {
+  background-color: var(--light-bg);
+}
+
+.section-bg-white {
+  background-color: var(--white);
+}
+
+.section-title {
+  color: var(--dark-text);
+  font-size: 2rem; /* Consistent heading size */
+  font-weight: 700;
+  margin-bottom: 1rem; /* More space below title */
+}
+
+.section-subtitle {
+  color: var(--medium-text);
+  font-size: 1.1rem; /* Slightly larger subtitle */
+  margin-bottom: 2.5rem; /* More space below subtitle */
+  font-weight: 300;
+}
+
+/* --- Cards (Used in About, Gallery, Dashboard) --- */
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* Slightly less rounded */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Add transition */
+}
+.card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+  transform: translateY(-3px); /* Lift on hover */
+}
+
+
+.card-body {
+ flex-grow: 1;
+ display: flex;
+ flex-direction: column;
+ padding: 1.25rem; /* Standard padding */
+}
+
+.card-img-top.card-image {
+  border-radius: 8px 8px 0 0; /* Match card rounding */
+}
+
+.card-image-icon { /* For smaller icons like in "Why Choose Us" */
+  width: 70px; /* Smaller icon */
+  height: 70px;
+  margin: 0 auto 1rem auto; /* Center icon, space below */
+  display: block;
+}
+
+.card-title {
+  color: var(--dark-text);
+  font-size: 1.2rem; /* Adjusted size */
+  font-weight: 500;
+  margin-top: 0; /* Remove top margin if image is present */
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: var(--medium-text);
+  font-size: 0.95rem;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.card-link {
+  color: var(--link-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto; /* Push link/button to bottom */
+}
+
+.card-link svg {
+  margin-left: 5px;
+  fill: currentColor; /* Use current color */
+}
+
+/* --- Specific Section Styles --- */
+
+/* Why Choose Us (about.php) */
+.wcu-card .card-body {
+  text-align: center;
+}
+
+.about-details {
+  color: var(--primary-color) !important; /* Use primary theme color */
+  font-weight: 500;
+  text-decoration: none; /* Remove underline */
+  border-bottom: 1px dashed var(--primary-color); /* Dashed underline */
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.collapse .card-body {
+  font-size: 0.9rem;
+  text-align: left;
+  background-color: #f8f9fa; /* Light background for collapsed content */
+  border-radius: 4px;
+}
+
+/* Explore Menu / Gallery / Dashboard Menu */
+.menu-item-card .card-img-top.card-image {
+  border-radius: 8px; /* Rounded image for menu items */
+  margin-bottom: 0; /* Remove margin if padding is in card-body */
+  aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image covers area */
+}
+.menu-item-card .card-body {
+  padding: 1rem; /* Adjust padding */
+  text-align: center;
+}
+.menu-item-card .card-title {
+ font-size: 1.1rem;
+ margin-bottom: 0.5rem;
+}
+.menu-item-card .card-text {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+.menu-item-card .fw-bold { /* Price styling */
+  color: var(--dark-text);
+  font-size: 1.1rem;
+}
+.menu-item-card .btn {
+  margin-top: auto; /* Push button to bottom */
+  width: 100%; /* Make button full width */
+}
+
+/* Special Offer Section (special.php) */
+.special-offer-section {
+  background-image: var(--radial-gradient-special);
+}
+
+.special-offer-heading {
+  color: var(--dark-text);
+  font-size: 1.8rem; /* Adjust size */
+  font-weight: 700;
+}
+
+.special-offer-description {
+  color: var(--medium-text);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.special-offer-img {
+  max-width: 100%; /* Allow image to be responsive */
+  height: auto;
+  max-height: 300px; /* Limit height */
+  margin-bottom: 20px;
+}
+
+.modal-code {
+  font-weight: bold !important;
+  font-size: 1.8rem; /* Larger code */
+  color: var(--primary-color);
+  text-align: center;
+  letter-spacing: 2px;
+  background-color: var(--light-bg);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px dashed var(--secondary-color);
+}
+
+.modal-title.special-title {
+  color: var(--dark-text) !important;
+  font-weight: 700; /* Less bold than 800 */
+}
+
+/* --- Forms (Contact, Login, Register, Admin) --- */
+.form-label {
+  color: var(--dark-text);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-control, .form-select {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0.6rem 0.9rem; /* Adjust padding */
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(var(--secondary-color), 0.15); /* Subtle focus */
+}
+
+/* Input validation states */
+.form-control.is-invalid, .form-select.is-invalid {
+  border-color: var(--danger-color);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e"); /* Bootstrap icon */
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.form-control.is-valid, .form-select.is-valid {
+  border-color: var(--success-color);
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+   background-repeat: no-repeat;
+   background-position: right calc(.375em + .1875rem) center;
+   background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+textarea.form-control {
+  min-height: 120px; /* Taller textarea */
+}
+
+/* Validation error messages */
+div.text-danger { /* Target the div used by jQuery Validate */
+  color: var(--danger-color) !important;
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+  display: block; /* Ensure it takes space */
+}
+label.error { /* Style for jQuery Validate errors (fallback) */
+  color: var(--danger-color);
+  font-size: 0.875em;
+  font-weight: normal;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+
+/* --- Footer Refinements --- */
+.footer {
+  background-color: var(--primary-color);
+    color: rgba(239, 239, 215, 0.8);
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+    /* margin-top: auto; */ /* flex-grow on main replaces this */
+    font-size: 0.9rem;
+    border-top: 3px solid var(--secondary-color);
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+
+
+/* Footer logo removed for less clutter, uncomment if needed */
+/*
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+*/
+
+.footer-email {
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--light-text);
+}
+.footer-email a {
+  color: var(--light-text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-email a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.footer-address {
+  font-size: 0.85rem;
+  color: rgba(239, 239, 215, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.footer-address-highlight {
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  color: var(--white); /* White highlight */
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: rgba(239, 239, 215, 0.6); /* Dim copyright */
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+/* Admin Table Styles (Optional enhancements) */
+.table {
+  margin-bottom: 2rem; /* Space below tables */
+}
+.table thead th {
+   background-color: var(--primary-color); /* Use primary color for admin tables */
+   color: var(--white);
+   border-color: var(--secondary-color); /* Darker borders */
+   font-weight: 500;
+   vertical-align: middle;
+}
+.table td, .table th {
+  vertical-align: middle; /* Vertically align cell content */
+}
+.table-hover tbody tr:hover {
+  background-color: rgba(0,0,0,0.04); /* Subtle hover for table rows */
+}
+.table .badge { /* Ensure badges stand out */
+  font-size: 0.8em;
+  padding: 0.4em 0.6em;
+}
+.table .btn-sm { /* Ensure buttons in table are not too small */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+.table .img-thumbnail {
+  padding: 0.15rem; /* Reduce padding */
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/* List Group (view_messages.php) */
+.list-group-item.list-group-item-warning { /* Style for unread messages */
+  border-left: 4px solid var(--warning-color);
+}
+.list-group-item.list-group-item-light { /* Style for read messages */
+  color: var(--medium-text); /* Make text slightly dimmer */
+}
+.message-actions {
+  margin-top: 0.5rem;
+}
+.message-actions .btn {
+  margin-left: 0.5rem;
+}
+
+/* Utility */
+.text-danger {
+   color: var(--danger-color) !important; /* Ensure override */
+}
+
+
+
+
+
+
+/* styles.css */
+
+/* ... (Keep all previous styles) ... */
+
+/* --- Profile Page Specific Styles --- */
+.profile-page .card {
+  border: 1px solid var(--border-color); /* Add back a subtle border */
+    border-radius: 0.5rem;
+    overflow: hidden; /* Prevent shadows from being clipped by inner elements */
+  
+  }
+
+/* Style the sub-section titles */
+.profile-page .card-title {
+  font-size: 1.25rem; /* Slightly larger */
+  color: var(--primary-color); /* Use theme color */
+  font-weight: 500;
+  margin-bottom: 1.5rem !important; /* More space below title */
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color); /* Separator line */
+}
+
+.profile-page .card-header {
+  background-color: #f8f9fa; /* Use Bootstrap's light grey */
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 500; /* Make header text slightly bolder */
+}
+
+.profile-page .card-body {
+  padding: 2rem 2.5rem; /* Adjust padding */
+}
+
+.profile-page .form-label {
+  font-weight: 500;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.profile-page .form-control { /* Make inputs slightly larger */
+  padding: 0.6rem 0.9rem;
+    font-size: 1rem;
+}
+
+.profile-page .form-text { /* Style help text */
+  
+  font-size: 0.85rem;
+    color: var(--medium-text);
+    margin-top: 0.3rem; /* Add space above help text */
+
+}
+
+.profile-page .btn { /* Add consistent button spacing/sizing */
+  padding: 0.65rem 1.25rem; /* Adjusted padding */
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.3rem; /* Standard button rounding */
+}
+.profile-page .btn i { /* Icon styling */
+  font-size: 1.1em;
+    line-height: 1;
+}
+
+/* Optional: Style alerts within profile cards */
+.profile-page .alert {
+  margin-bottom: 1.5rem;
+    border-radius: 0.3rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+}
+
+
+.profile-page hr { /* Style the separator */
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+
+.profile-page .alert .btn-close { /* Make alert close button smaller */
+  padding: 0.6rem;
+}
+
+
+/* Display heading styling */
+.display-6 {
+  font-weight: 400; /* Lighter weight for display headings */
+}
+
+
+/* styles.css */
+
+/* ... other styles ... */
+
+/* Admin Dashboard Card Enhancements */
+.admin-dashboard-card .card-title i {
+  color: var(--primary-color); /* Use theme color for icons */
+  margin-bottom: 0.5rem; /* Space below icon if title wraps */
+  font-size: 1.1em; /* Slightly larger icon */
+}
+.admin-dashboard-card .card-body {
+  padding: 1.5rem; /* Consistent padding */
+}
+.admin-dashboard-card .btn {
+  padding: 0.5rem 1rem; /* Adjust button padding */
+}
