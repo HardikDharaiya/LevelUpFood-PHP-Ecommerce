@@ -2,7 +2,7 @@
 
 **Technologies:** PHP (Procedural), MySQL, HTML5, CSS3, Bootstrap 5, JavaScript, jQuery  
 **Environment:** XAMPP (Apache, MariaDB, PHP 8.x)  
-**GitHub Repo:** [Link here after creation](https://github.com/HardikDharaiya/LevelUpFood-PHP-Ecommerce)
+**GitHub Repo:** [Click](https://github.com/HardikDharaiya/LevelUpFood-PHP-Ecommerce)
 
 ## 🔥 Project Description
 
